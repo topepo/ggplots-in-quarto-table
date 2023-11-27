@@ -1,0 +1,35 @@
+# Preface {.unnumbered}
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(gt)
+library(modeldata)
+```
+
+```{r}
+#| label: session-info
+
+sessioninfo::session_info()
+```
+
+```{r}
+#| label: quarto-info
+#| echo: false
+#| comment: ""
+
+quarto_check <- function(){
+  file_out <- tempfile("temp-quarto.txt")
+  system2(command = "quarto", args = "check", stderr=file_out)
+  res <- readLines(file_out)
+  res <- purrr::map_chr(res, cli::ansi_strip)
+  rms <- c("(|)", "(/)", "(\\)", "(/)", "(-)", "/Users", "Path:", "Install with")
+  for (pat in rms) {
+    res <- res[!grepl(pat, res, fixed = TRUE)]
+  }
+  res <- res[res != ""]
+  invisible(res)
+}
+cat(quarto_check(), sep = "\n")
+```

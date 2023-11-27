@@ -1,0 +1,21 @@
+project:
+  type: book
+
+book:
+  title: "ggplots-in-quarto-table"
+  author: "Norah Jones"
+  date: "11/27/2023"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+
+
+
